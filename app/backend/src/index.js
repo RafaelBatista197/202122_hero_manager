@@ -6,11 +6,10 @@ const passport = require('passport');
 const passportLocal = require('passport-local').Strategy;
 const passportHTTPBearer = require('passport-http-bearer').Strategy;
 const mongo = require('./database.js');
-const agenda = require('./agenda.js');
 const path = require('path');
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 
 
@@ -20,8 +19,7 @@ const start = async() => {
     const app = express();
     console.log("MongoDB setup")
     const db = await mongo.connect();
-    console.log("Agenda setup")
-    agenda.start(db);
+
 
     passport.use(new passportLocal((username, password, done) => {
         const users = db.db.collection('users');
