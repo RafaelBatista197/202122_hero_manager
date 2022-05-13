@@ -1,7 +1,7 @@
 FROM node
 
 
-WORKDIR /app/services/statisitcs
+WORKDIR /app/services/statistics
 
 COPY package.json .
 

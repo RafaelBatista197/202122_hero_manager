@@ -11,13 +11,10 @@ const start = async() => {
     const app = express();
     console.log("MongoDB setup")
     const db = await mongo.connect();
-  
-
     
     app.use(cors())
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-  
 
     app.get('/api/statistics', async(request, response) => {
         console.log("[Statistics] GET")
@@ -29,10 +26,11 @@ const start = async() => {
         return response.send(await mongo.getStatisticsLatest(db.db));
     });
 
-    app.post('/api/statistics', async(request, response) => { 
+
+    app.post('/api/statistics', async(request, response) => {
         console.log("[Statistics] POST")
         return response.send(await mongo.insertStatistics(db.db, request.body));
-    });
+        });
 
     app.listen(PORT, () => console.log(`Marvel Hero Manager API listening on port ${PORT}`));
 }

@@ -57,6 +57,10 @@ services:
     env_file: .env
     ports:
       - "8083:8083"
+    environment:
+      - DB_HOST=hero_manager_database
+      - DB_PORT=27017
+      - DB_NAME=heroManager
   hero_manager_scheduler:
     image: hero_manager_scheduler_image
     container_name: hero_manager_scheduler
@@ -68,6 +72,10 @@ services:
     env_file: .env
     ports:
       - "8084:8084"
+    environment:
+      - DB_HOST=hero_manager_database
+      - DB_PORT=27017
+      - DB_NAME=heroManager
 
   
 

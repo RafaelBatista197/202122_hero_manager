@@ -5,6 +5,8 @@ const agenda = require('./agenda.js');
 
 
 const PORT = process.env.PORT || 8084;
+const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+
 
 
 const start = async() => {
